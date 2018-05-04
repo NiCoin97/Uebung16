@@ -38,7 +38,9 @@ public class PersonQueue implements Queue
 
 	@Override
 	public Person next() {
-	    return pQueue[index];
+	    Person next = pQueue[index];
+	    index++;
+	    return next;
 	}
 	
     }
