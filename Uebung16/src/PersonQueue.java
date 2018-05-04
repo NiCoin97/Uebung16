@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Klasse StringQueue
+ * Klasse PersonQueue
  *
  * @author Nico Spanier, Matthias Tritt
  * @version 25.01.2018
