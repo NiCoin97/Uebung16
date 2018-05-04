@@ -4,7 +4,7 @@ import java.util.Arrays;
 /**
  * Klasse StringQueue
  *
- * @author Nico Spanier, Christian Grauvogel
+ * @author Nico Spanier, Matthias Tritt
  * @version 25.01.2018
  */
 public class PersonQueue implements Queue 
@@ -44,7 +44,7 @@ public class PersonQueue implements Queue
 	}
 	
     }
-
+    
     
     public void print() {
 	PersonIterator pi = new PersonInOrderIterator();
