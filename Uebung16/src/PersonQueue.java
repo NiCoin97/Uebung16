@@ -61,6 +61,7 @@ public class PersonQueue implements Queue
 	int index = 0;
 	while (pi.hasNext()) {
 	   vornamen[index] = pi.next().getVorname();
+	   index++;
 	}
 	Arrays.sort(vornamen);
 	return vornamen[0];
