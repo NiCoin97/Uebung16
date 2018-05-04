@@ -54,9 +54,9 @@ public class PersonQueue implements Queue
     }
     
     public String smallest() {
+	
 	PersonIterator pi = new PersonInOrderIterator();
-	String vorname = pi.next().getVorname();
-	String kurzVorname = vorname;
+
 	String[] vornamen = new String[size];
 	int index = 0;
 	while (pi.hasNext()) {
