@@ -97,12 +97,12 @@ public class NumberCruncher {
 	averageCount /= (laengeArray);
 	floatArray[indexOfBiggest] = averageCount;
     }
-    
+
     @Override
     public String toString() {
 	StringBuilder sb = new StringBuilder("");
-	sb.append("Das floatArray mit einer Größe von " + laengeArray + ":" + "\n" );
-	for (int i=0; i < laengeArray; i++) {
+	sb.append("Das floatArray mit einer Größe von " + laengeArray + ":" + "\n");
+	for (int i = 0; i < laengeArray; i++) {
 	    sb.append(i + ": " + floatArray[i] + "\n");
 	}
 	return sb.toString();

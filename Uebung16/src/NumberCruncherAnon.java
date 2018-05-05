@@ -27,10 +27,15 @@ public class NumberCruncherAnon {
     }
 
     public void crunch(String[] operations) {
+	Operation op = new Operation() {
+	    @Override
+	    public void doOperation() {
+	    }
+	};
 	for (String operation : operations) {
 	    switch (operation) {
 	    case "sum":
-		new Operation() {
+		op = new Operation() {
 		    @Override
 		    public void doOperation() {
 			for (int i = 1; i < floatArray.length; i++) {
@@ -40,7 +45,7 @@ public class NumberCruncherAnon {
 		};
 		break;
 	    case "swirl":
-		new Operation() {
+		op = new Operation() {
 		    @Override
 		    public void doOperation() {
 			for (int i = 0; i < laengeArray; i++) {
@@ -55,7 +60,7 @@ public class NumberCruncherAnon {
 		};
 		break;
 	    case "divide":
-		new Operation() {
+		op = new Operation() {
 		    @Override
 		    public void doOperation() {
 			float[] sortedArray = floatArray.clone();
@@ -68,7 +73,7 @@ public class NumberCruncherAnon {
 		};
 		break;
 	    case "subtract":
-		new Operation() {
+		op = new Operation() {
 		    @Override
 		    public void doOperation() {
 			for (int i = 1; i < floatArray.length; i++) {
@@ -78,7 +83,7 @@ public class NumberCruncherAnon {
 		};
 		break;
 	    case "average":
-		new Operation() {
+		op = new Operation() {
 		    @Override
 		    public void doOperation() {
 			float biggest = 0.0F;
@@ -101,9 +106,8 @@ public class NumberCruncherAnon {
 		System.out.println("Leere oder ungültige Eingabe");
 		break;
 	    }
-
+	    op.doOperation();
 	}
-
     }
 
     @Override
