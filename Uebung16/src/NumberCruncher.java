@@ -12,8 +12,8 @@ public class NumberCruncher {
     Random rnd;
     int laengeArray;
 
-    public NumberCruncher(int[] args) {
-	laengeArray = args[0];
+    public NumberCruncher(int laenge) {
+	laengeArray = laenge;
 	floatArray = new float[laengeArray];
 	for (int i = 0; i < laengeArray; i++) {
 	    rnd = new Random();
@@ -70,7 +70,7 @@ public class NumberCruncher {
 	float[] sortedArray = floatArray.clone();
 	Arrays.sort(sortedArray);
 
-	for (int i = 0; i < laengeArray; i++) {
+	for (int i = 0; i < laengeArray/2; i++) {
 	    floatArray[i] = sortedArray[laengeArray - i - 1] / sortedArray[i];
 	}
 
