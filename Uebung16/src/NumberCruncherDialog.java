@@ -1,6 +1,14 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Klasse NumberCruncherDialog
+ * 
+ * Realisiert das Testen der Klasse NumberCruncherAnon
+ * 
+ * @author Nico Spanier, Matthias Tritt
+ *
+ */
 public class NumberCruncherDialog {
 
     // --------Klassenkonstanten-------
@@ -38,6 +46,7 @@ public class NumberCruncherDialog {
     private NumberCruncherAnon nca;
     private Scanner input;
 
+    
     public NumberCruncherDialog() {
 	input = new Scanner(System.in);
     }
