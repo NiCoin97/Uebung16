@@ -25,17 +25,31 @@ public class PersonQueue implements Queue
         size = 0;
     }
     
+    /**
+     * Interface: PersonIterator, erbt von java.util.Iterator<Person>
+     *
+     */
     interface PersonIterator extends java.util.Iterator<Person> { }
     
+    /**
+     * Private Klasse PersonInOrderIterator, implementiert das Interface PersonIterator
+     *
+     */
     private class PersonInOrderIterator implements PersonIterator {
 	
 	private int index = 0;
 
+	/**
+	 * prüft, ob nocht weitere Personen existieren
+	 */
 	@Override
 	public boolean hasNext() {
 	    return index < size;
 	}
 
+	/**
+	 * gibt die nächste Person zurück
+	 */
 	@Override
 	public Person next() {
 	    Person next = pQueue[index];
@@ -45,7 +59,10 @@ public class PersonQueue implements Queue
 	
     }
     
-    
+    /**
+     * Gibt die aktuelle Warteliste zurück
+     * Nutzt dazu den Iterator PersonInOrderIterator
+     */
     public void print() {
 	PersonIterator pi = new PersonInOrderIterator();
 	while (pi.hasNext()) {
@@ -53,18 +70,22 @@ public class PersonQueue implements Queue
 	}
     }
     
+    /**
+     * Gibt den lexikalisch kleinsten Vornamen der Warteschlange zurück
+     * 
+     * @return kleinster Vorname
+     */
     public String smallest() {
 	
 	PersonIterator pi = new PersonInOrderIterator();
 
-	String[] vornamen = new String[size];
-	int index = 0;
+	String kleinsterVorname = pi.next().getVorname();
 	while (pi.hasNext()) {
-	   vornamen[index] = pi.next().getVorname();
-	   index++;
+	    String vorname = pi.next().getVorname();
+	    if (kleinsterVorname.compareTo(vorname) >= 0)
+		kleinsterVorname = vorname;
 	}
-	Arrays.sort(vornamen);
-	return vornamen[0];
+	return kleinsterVorname;
     }
     
     

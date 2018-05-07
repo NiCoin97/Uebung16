@@ -8,11 +8,32 @@ import java.util.Random;
  * @version 05.05.18
  */
 public class NumberCruncherAnon {
-    float[] floatArray;
-    Random rnd;
-    int laengeArray;
+    private float[] floatArray;
+    private Random rnd;
+    private int laengeArray;
+    
+    
+    /**
+     * Konstruktor für die Klasse NumberCruncherAnon
+     * 
+     * @param floatArr		wird als das floatArray der Klasse initialisiert
+     */
+    public NumberCruncherAnon(float[] floatArr) {
+	laengeArray = floatArr.length;
+	floatArray = floatArr;
+    }
 
+    /**
+     * Konstruktor für die Klasse NumberCruncherAnon
+     * 
+     * Füllt das Array mit zufälligen Werten und legt eine übergebene Länge fest.
+     * 
+     * @param laenge	die Laenge des Arrays
+     */
     public NumberCruncherAnon(int laenge) {
+	if (laenge <= 0) 
+	    throw new RuntimeException("Die Länge muss mindestens 1 sein!");
+	
 	laengeArray = laenge;
 	floatArray = new float[laengeArray];
 	for (int i = 0; i < laengeArray; i++) {
@@ -22,10 +43,22 @@ public class NumberCruncherAnon {
 
     }
 
+    /**
+     * Interface Operation
+     * 
+     * hat eine Methode doOperation
+     *      
+     */
     interface Operation {
 	void doOperation();
     }
 
+    
+    /**
+     * Führt eine beliebige Folge an Operationen an dem floatArray durch.
+     * 
+     * @param operations		ein Array mit den durchzuführenden Operationen
+     */
     public void crunch(String[] operations) {
 	Operation op = new Operation() {
 	    @Override
@@ -66,7 +99,7 @@ public class NumberCruncherAnon {
 			float[] sortedArray = floatArray.clone();
 			Arrays.sort(sortedArray);
 
-			for (int i = 0; i < laengeArray/2; i++) {
+			for (int i = 0; i < laengeArray / 2; i++) {
 			    floatArray[i] = sortedArray[laengeArray - i - 1] / sortedArray[i];
 			}
 		    }
@@ -102,14 +135,16 @@ public class NumberCruncherAnon {
 		    }
 		};
 		break;
-	    default:
-		System.out.println("Leere oder ungültige Eingabe");
-		break;
 	    }
 	    op.doOperation();
 	}
     }
 
+    /**
+     * toString-Methode der Klasse
+     * 
+     * bereitet das Array als String auf
+     */
     @Override
     public String toString() {
 	StringBuilder sb = new StringBuilder("");
@@ -118,6 +153,22 @@ public class NumberCruncherAnon {
 	    sb.append(i + ": " + floatArray[i] + "\n");
 	}
 	return sb.toString();
+    }
+    
+    /**
+     * get-Methode des floatArray
+     * @return floatArray
+     */
+    public float[] getFloatArray() {
+	return floatArray;
+    }
+
+    /**
+     * get-Methode des Laenge des Arrays
+     * @return laengeArray
+     */
+    public int getLaengeArray() {
+	return laengeArray;
     }
 
 }

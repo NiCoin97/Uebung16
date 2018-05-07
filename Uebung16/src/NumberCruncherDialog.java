@@ -5,7 +5,8 @@ public class NumberCruncherDialog {
 
     // --------Klassenkonstanten-------
 
-    private String[] operationsNamen = { "sum", "swirl", "divide", "substract", "average" };
+    /** The Constant operationsNamen. */
+    private static final String[] operationsNamen = { "sum", "swirl", "divide", "substract", "average" };
 
     // ----int-Werte-----
 
@@ -29,6 +30,8 @@ public class NumberCruncherDialog {
 	    SWIRL + ". swirl\n" + DIVIDE + ". divide\n"
 	    + SUBSTRACT + ". substract\n" + AVERAGE + 
 	    ". average\n" + BEENDEN + ". Fertig\n";
+    
+    //---------nicht statische Attribute----------
 
     private ArrayList<String> operationsList;
 
@@ -43,6 +46,12 @@ public class NumberCruncherDialog {
 	new NumberCruncherDialog().funktionAusfuehren();
     }
 
+    
+    /**
+     * Funktion auswaehlen.
+     *
+     * @return the int
+     */
     private int funktionAuswaehlen() {
 	int funktion = -1;
 
@@ -54,12 +63,16 @@ public class NumberCruncherDialog {
 	    }
 	}
 	return funktion;
-
     }
 
+    
+    /**
+     * Funktion ausfuehren.
+     */
     private void funktionAusfuehren() {
 	int funktion = funktionAuswaehlen();
 	while (funktion != BEENDEN) {
+	    try {
 	    switch (funktion) {
 	    case NEUES_ARRAY:
 		int laenge = erfasseInt("Wie groß soll das Array sein?");
@@ -67,19 +80,37 @@ public class NumberCruncherDialog {
 		System.out.println("Das Array wurde erstellt!");
 		break;
 	    case ARRAY_AUSGEBEN:
+		checkArray();
 		System.out.println(nca);
 		break;
 	    case CRUNCH:
+		checkArray();
 		String[] operationsArr = crunchOperations();
-		System.out.println("Es werden folgende Operationen nacheinaner ausgeführt: ");
+		System.out.println("Es werden folgende Operationen nacheinander ausgeführt: ");
 		gebeArrayAus(operationsArr);
 		nca.crunch(operationsArr);
 		break;
 	    }
+	    } catch (RuntimeException e) {
+		System.out.println(e);
+	    } catch (Exception e) {
+		System.out.println(e);
+	    }
+	    
 	    funktion = funktionAuswaehlen();
 	}
     }
 
+    private void checkArray() {
+	if (nca==null)
+	    throw new RuntimeException("Es existiert noch kein Array!");
+    }
+
+    /**
+     * Crunch operations.
+     *
+     * @return the string[]
+     */
     private String[] crunchOperations() {
 	
 	String[] operationen;
