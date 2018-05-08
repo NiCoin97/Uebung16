@@ -13,7 +13,6 @@ public class NumberCruncherDialog {
 
     // --------Klassenkonstanten-------
 
-    /** The Constant operationsNamen. */
     private static final String[] operationsNamen = { "sum", "swirl", "divide", "substract", "average" };
 
     // ----int-Werte-----
@@ -46,11 +45,20 @@ public class NumberCruncherDialog {
     private NumberCruncherAnon nca;
     private Scanner input;
 
-    
+    /**
+     * Konstruktor der Klasse NumberCruncherDialog
+     * 
+     * initialisiert den Scanner für die Tastatur
+     */
     public NumberCruncherDialog() {
 	input = new Scanner(System.in);
     }
 
+    /**
+     * main-Methode der Klasse NumberCruncherDialog
+     * initialisiert einen NumberCruncherDialog und startet die funktionAusfuehren-Methode
+     * @param args
+     */
     public static void main(String[] args) {
 	new NumberCruncherDialog().funktionAusfuehren();
     }
